@@ -54,13 +54,14 @@ try {
       }
     }
   }, [tempInfo.weathermood]);
-  const [currentTime, setTime] = useState(new Date().toLocaleString());
 
 
+  const [currentTime, setTime] = useState(new Date());
   useEffect(() => {
-  setTime(new Date().toLocaleString());
-
-}
+  setInterval(() => {
+    setTime(new Date());
+  }, 1000);
+},[]
 
 );
 
@@ -88,7 +89,7 @@ try {
     <div className='place'> {tempInfo.country} </div>
   </div>
   </div>
-  <div className='date'>{currentTime}</div>
+  <div className='date'>{currentTime.toLocaleString()}</div>
   <div className='extra-temp'>
     <div className='temp-info-minmax'>
       <div className='two-sided-section'>
